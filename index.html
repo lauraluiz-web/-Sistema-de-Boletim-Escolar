@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Boletim Escolar Digital - Sistema de consulta de notas, faltas e situação escolar">
+
+    <title>Boletim Escolar Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-area">
+            <img src="imagens/logo.png" alt="Logo da escola" class="logo">
+            
+            <div>
+                <h1>Boletim Escolar Digital</h1>
+                <p>Portal do aluno</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="menu" aria-label="Menu principal">
+        <a href="#inicio">Início</a>
+        <a href="#notas">Notas</a>
+        <a href="#consulta">Consulta</a>
+        <a href="#avisos">Avisos</a>
+    </nav>
+
+    <main id="inicio" class="container">
+
+        <!-- DADOS DO ALUNO -->
+        <section class="aluno">
+            <div class="titulo-secao">
+                <h2>👤 Dados do Aluno</h2>
+            </div>
+
+            <div class="dados-grid">
+
+                <article class="dado">
+                    <span>ALUNO</span>
+                    <strong>João da Silva</strong>
+                </article>
+
+                <article class="dado">
+                    <span>MATRÍCULA</span>
+                    <strong>20260025</strong>
+                </article>
+
+                <article class="dado">
+                    <span>TURMA</span>
+                    <strong>2º Ano J</strong>
+                </article>
+
+                <article class="dado">
+                    <span>CURSO</span>
+                    <strong>Desenvolvimento de Sistemas</strong>
+                </article>
+
+                <article class="dado">
+                    <span>ANO LETIVO</span>
+                    <strong>2026</strong>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- CARDS -->
+        <section class="cards-resumo" aria-label="Resumo escolar">
+
+            <article class="card">
+                <div class="card-icone">📚</div>
+                <div>
+                    <p>DISCIPLINAS</p>
+                    <h2 id="totalDisciplinas">08</h2>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-icone">📊</div>
+                <div>
+                    <p>MÉDIA</p>
+                    <h2 id="mediaGeral">8,2</h2>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-icone">📅</div>
+                <div>
+                    <p>FREQUÊNCIA</p>
+                    <h2 id="frequencia">92%</h2>
+                </div>
+            </article>
+
+            <article class="card situacao-card">
+                <div class="card-icone">✅</div>
+                <div>
+                    <p>SITUAÇÃO</p>
+                    <h2 id="situacaoGeral">APROVADO</h2>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- BOTÕES -->
+        <section class="acoes" aria-label="Ações do boletim">
+
+            <button class="btn btn-primary" onclick="consultarNotas()">
+                📊 Consultar Notas
+            </button>
+
+            <button class="btn btn-secondary" onclick="consultarFaltas()">
+                📅 Consultar Faltas
+            </button>
+
+            <button class="btn btn-success" onclick="calcularMediaTabela()">
+                🧮 Calcular Média
+            </button>
+
+            <button class="btn btn-warning" onclick="imprimirBoletim()">
+                🖨️ Imprimir Boletim
+            </button>
+
+            <button class="btn btn-danger" onclick="limparConsulta()">
+                🧹 Limpar
+            </button>
+
+            <button class="btn btn-dark" onclick="voltarInicio()">
+                ↩️ Voltar
+            </button>
+
+        </section>
+
+
+        <!-- TABELA DE NOTAS -->
+        <section id="notas" class="tabela-section">
+
+            <div class="titulo-secao">
+                <h2>📊 Tabela de Notas</h2>
+                <p>Resultado acadêmico do aluno</p>
+            </div>
+
+            <div class="tabela-container">
+
+                <table id="tabelaNotas">
+
+                    <caption>
+                        Boletim escolar - Ano letivo 2026
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th>Disciplina</th>
+                            <th>1º Bim.</th>
+                            <th>2º Bim.</th>
+                            <th>3º Bim.</th>
+                            <th>Média</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Português</td>
+                            <td>8,0</td>
+                            <td>7,5</td>
+                            <td>9,0</td>
+                            <td class="media">8,2</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Matemática</td>
+                            <td>6,0</td>
+                            <td>7,0</td>
+                            <td>8,0</td>
+                            <td class="media">7,0</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Programação</td>
+                            <td>9,0</td>
+                            <td>8,5</td>
+                            <td>9,5</td>
+                            <td class="media">9,0</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Banco de Dados</td>
+                            <td>8,5</td>
+                            <td>8,0</td>
+                            <td>9,0</td>
+                            <td class="media">8,5</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Inglês</td>
+                            <td>7,5</td>
+                            <td>8,0</td>
+                            <td>8,5</td>
+                            <td class="media">8,0</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Física</td>
+                            <td>7,0</td>
+                            <td>6,5</td>
+                            <td>7,5</td>
+                            <td class="media">7,0</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Redes de Computadores</td>
+                            <td>8,0</td>
+                            <td>8,5</td>
+                            <td>9,0</td>
+                            <td class="media">8,5</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Desenvolvimento Web</td>
+                            <td>9,0</td>
+                            <td>9,0</td>
+                            <td>9,5</td>
+                            <td class="media">9,2</td>
+                            <td class="aprovado">Aprovado</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- LAYOUT PRINCIPAL -->
+        <section class="conteudo-grid">
+
+            <!-- FORMULÁRIO -->
+            <article id="consulta" class="formulario-box">
+
+                <div class="titulo-secao">
+                    <h2>📝 Consultar Notas</h2>
+                    <p>Informe as notas para calcular o resultado.</p>
+                </div>
+
+                <form id="formularioNotas">
+
+                    <div class="campo">
+                        <label for="nome">Nome:</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite seu nome"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="matricula">Matrícula:</label>
+                        <input
+                            type="text"
+                            id="matricula"
+                            placeholder="Digite sua matrícula"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="disciplina">Disciplina:</label>
+                        <select id="disciplina" required>
+                            <option value="">Selecione</option>
+                            <option>Português</option>
+                            <option>Matemática</option>
+                            <option>Programação</option>
+                            <option>Banco de Dados</option>
+                            <option>Inglês</option>
+                            <option>Física</option>
+                            <option>Redes de Computadores</option>
+                            <option>Desenvolvimento Web</option>
+                        </select>
+                    </div>
+
+                    <div class="notas-grid">
+
+                        <div class="campo">
+                            <label for="nota1">Nota 1:</label>
+                            <input
+                                type="number"
+                                id="nota1"
+                                min="0"
+                                max="10"
+                                step="0.1"
+                                placeholder="0 a 10"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="nota2">Nota 2:</label>
+                            <input
+                                type="number"
+                                id="nota2"
+                                min="0"
+                                max="10"
+                                step="0.1"
+                                placeholder="0 a 10"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="nota3">Nota 3:</label>
+                            <input
+                                type="number"
+                                id="nota3"
+                                min="0"
+                                max="10"
+                                step="0.1"
+                                placeholder="0 a 10"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-calcular">
+                        CALCULAR RESULTADO
+                    </button>
+
+                </form>
+
+                <div id="resultado" class="resultado" aria-live="polite"></div>
+
+            </article>
+
+
+            <!-- AVISOS -->
+            <aside id="avisos" class="avisos">
+
+                <div class="titulo-secao">
+                    <h2>📢 Avisos</h2>
+                </div>
+
+                <article class="aviso">
+                    <span>📢</span>
+                    <div>
+                        <h3>Resultado das avaliações</h3>
+                        <p>
+                            O resultado das avaliações já está disponível
+                            no sistema.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="aviso">
+                    <span>📅</span>
+                    <div>
+                        <h3>Reunião de pais</h3>
+                        <p>
+                            A próxima reunião de pais será realizada no
+                            dia 28/09.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="aviso">
+                    <span>📚</span>
+                    <div>
+                        <h3>Recuperação</h3>
+                        <p>
+                            Consulte o calendário escolar para verificar
+                            as datas de recuperação.
+                        </p>
+                    </div>
+                </article>
+
+            </aside>
+
+        </section>
+
+
+        <!-- FREQUÊNCIA -->
+        <section class="frequencia-section">
+
+            <div class="titulo-secao">
+                <h2>📅 Frequência Escolar</h2>
+            </div>
+
+            <div class="frequencia-conteudo">
+
+                <div class="barra-frequencia">
+                    <div
+                        id="barraProgresso"
+                        class="progresso"
+                        style="width: 92%;"
+                    >
+                        92%
+                    </div>
+                </div>
+
+                <p>
+                    <strong>Frequência:</strong>
+                    <span id="frequenciaTexto">92%</span>
+                </p>
+
+                <p id="situacaoFrequencia" class="frequencia-ok">
+                    Situação: Frequência adequada
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="rodape">
+
+        <div>
+            <h2>Boletim Escolar Digital</h2>
+            <p>Sistema acadêmico escolar</p>
+        </div>
+
+        <div>
+            <p>© 2026 - Todos os direitos reservados.</p>
+            <p>Desenvolvido com HTML5, CSS3 e JavaScript.</p>
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
